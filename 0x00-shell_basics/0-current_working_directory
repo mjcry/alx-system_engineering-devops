@@ -1,2 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
+_base="$(/root/alx-system_engineering-devops/0x00-shell_basics$_script)"
+echo "The location: $_base"
 why?
