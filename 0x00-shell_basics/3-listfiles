@@ -1,2 +1,2 @@
 #!/bin/bash
-cd why?
+ls -l why?
