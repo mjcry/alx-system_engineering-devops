@@ -1,2 +1,2 @@
 #!/bin/bash
-awk '{ print FILENAME }'iamafile awk '{ print FILENAME }'/tmp
+echo "the file is." > iamafile
