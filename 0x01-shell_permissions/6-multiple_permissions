@@ -1,2 +1,2 @@
 #!/bin/bash 
-mkdir -p /olddir/newdir
+chmod ug+x,o+r hello
