@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "the file is." > iamafile
+$ file /tmp/iamafile
