@@ -1,2 +1,2 @@
-#!/bin/bash 
-wc -i <id -iun>
+#!/bin/bash
+whoami
