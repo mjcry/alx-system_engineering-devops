@@ -1,2 +1,2 @@
 #!/bin/bash
-Aca | tr Ac Ze Zea
+grep -1 "[a-z]"
