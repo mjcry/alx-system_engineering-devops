@@ -1,2 +1,30 @@
-#!/bin/bash 
-echo
+total 104
+drwxr-xr-x 2 root root 4096 Sep  5 08:40 .
+drwxr-xr-x 6 root root  121 Sep  4 21:25 ..
+-rwxr--r-- 1 root root   32 Sep  4 21:28 0-hello_world
+-rwxr--r-- 1 root root   26 Sep  5 07:06 10-no_more_js
+-rwxr--r-- 1 root root   25 Sep  5 07:16 11-directories
+-rwxr--r-- 1 root root   38 Sep  5 02:04 12-newest_files
+-rwxr--r-- 1 root root   28 Sep  5 02:17 13-unique
+-rwxr--r-- 1 root root   42 Sep  5 02:59 14-findthatword
+-rwxr--r-- 1 root root   30 Sep  5 02:49 15-countthatword
+-rwxr--r-- 1 root root   42 Sep  5 02:52 16-whatsnext
+-rwxr--r-- 1 root root   44 Sep  5 03:09 17-hidethisword
+-rwxr--r-- 1 root root   44 Sep  5 04:04 18-letteronly
+-rwxr--r-- 1 root root   31 Sep  5 03:24 19-AZ
+-rwxr--r-- 1 root root   28 Sep  5 06:04 1-confused_smiley
+-rwxr--r-- 1 root root   52 Sep  5 08:02 20-hiago
+-rwxr--r-- 1 root root   33 Sep  5 05:37 21-reverse
+-rwxr--r-- 1 root root   42 Sep  5 05:30 22-users_and_homes
+-rwxr--r-- 1 root root   30 Sep  5 06:14 2-hellofile
+-rwxr--r-- 1 root root   40 Sep  5 06:19 3-twofiles
+-rwxr--r-- 1 root root   33 Sep  4 22:13 4-lastlines
+-rwxr--r-- 1 root root   33 Sep  4 22:15 5-firstlines
+-rwxr--r-- 1 root root   32 Sep  5 06:22 6-third_line
+-rwxr--r-- 1 root root   74 Sep  5 08:15 7-file
+-rwxr--r-- 1 root root   38 Sep  5 08:40 8-cwd_state
+-rwxr--r-- 1 root root   35 Sep  5 08:05 9-duplicate_last_line
+-rw-r--r-- 1 root root   38 Sep  5 08:16 \*\'Best
+-rw-r--r-- 1 root root    0 Sep  5 08:05 iacta
+-rwxr--r-- 1 root root    0 Sep  5 08:40 ls_cwd_content
+-rw-r--r-- 1 root root   27 Sep  4 21:31 README.md
