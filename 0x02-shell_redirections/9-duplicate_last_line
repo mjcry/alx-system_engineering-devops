@@ -1,2 +1,2 @@
 #!/bin/bash
-awk 'END{print}{print}' iacta
+tail -1 iacta >> iacta
