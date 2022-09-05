@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Chiago" | cut -c 2- 
+echo "Chicago" | cut 'c'
