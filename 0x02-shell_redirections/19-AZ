@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -1 "[a-z]"
+tr 'A' 'Z'|tr 'C' 'E'
