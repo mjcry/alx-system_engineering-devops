@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -Sort by Newest| wc -l
+ls -1t | head -10
