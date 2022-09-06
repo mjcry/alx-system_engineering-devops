@@ -1,2 +1,2 @@
 #!/bin/bash
-$PATH | wc - 1
+$PWD | wc -l
