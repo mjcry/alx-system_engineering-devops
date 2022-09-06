@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(($TRUEKNOWLEDGE+TRUEKNOWLEDGE)) 
+echo $(($TRUEKNOWLEDGE*2)) 
