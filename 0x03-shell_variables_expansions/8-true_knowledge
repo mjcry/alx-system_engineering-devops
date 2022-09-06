@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEGE="{1..128}" \n
+echo $((TRUEKNOWLEGE+TRUEKNOWLEGE))  
