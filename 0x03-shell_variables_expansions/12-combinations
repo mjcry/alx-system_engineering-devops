@@ -1,2 +1,2 @@
 #!/bin/bash
-echo a{a..z} o{a..z} | list
+echo {a..z}{a..z}  
