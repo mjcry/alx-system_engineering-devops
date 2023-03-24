@@ -1,5 +1,1 @@
-# creating a manifest that kills a process named killmenow
-exec { 'pkill':
-  command => 'pkill -f killmenow',
-  path    => '/usr/local/bin/:/bin/',
-}
+puppet resource package pip3 ensure=present provider=pip3 pip=flask version=2.1.0
