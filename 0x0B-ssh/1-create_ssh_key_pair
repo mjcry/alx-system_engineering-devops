@@ -4,4 +4,4 @@
 # It will be 4096 bits long and protected by the passphrase "betty"
 
 # Generate a 4096 bit RSA private key named "school"
-openssl genrsa -des3 -out school -passout pass:betty -f4 4096
+ssh-keygen -b 4096 -f school -N betty 
