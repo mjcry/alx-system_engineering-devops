@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#
+# reinstall the loader here are tge xosr
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get -y update
+apt-get -y install haproxy=2.0.\*
+
+echo "ENABLED=1" >> /etc/default/haproxy
+
+echo "
+frontend load_balancer
+    bind *:80
+    mode http
+    default_backend webserver
+backend webserver
+    balance roundrobin
+    server 111215-web-01 54.160.100.184 check
+    server 111215-web-02 54.226.22.105:80 check
+" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
