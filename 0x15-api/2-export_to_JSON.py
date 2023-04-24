@@ -1,43 +1,36 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """
-Write a  Python script that, using this REST API,
-for a given employee ID, returns information about
-his/her TODO list progress
+    export data in the JSON format.
 """
+if __name__ == "__main__":
+    import json
+    import requests
+    from sys import argv
 
-import requests
-import sys
+    # Data
+    ID = argv[1]
+    url_api = "https://jsonplaceholder.typicode.com"
 
+    # Endpoints
+    ep_user = "{}/users/{}".format(url_api, str(ID))
+    ep_todos = "{}/todos".format(ep_user)
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: {} employee_id".format(sys.argv[0]))
-        sys.exit(1)
+    # Requests
+    user = requests.get(ep_user)
+    todos = requests.get(ep_todos)
 
-    id_c = sys.argv[1]
-    url_user = "https://jsonplaceholder.typicode.com/users/{}".format(id_c)
-    res = requests.get(url_user)
-    if res.status_code != 200:
-        print("User not found")
-        sys.exit(1)
-    name = res.json().get('name')
+    # Format
+    user = user.json()
+    todos = todos.json()
 
-    url_task = "https://jsonplaceholder.typicode.com/todos"
-    res_task = requests.get(url_task, params={"userId": id_c})
-    if res_task.status_code != 200:
-        print("Tasks not found")
-        sys.exit(1)
-
-    task_title = []
-    complete = 0
-    total_task = len(res_task.json())
-
-    for task in res_task.json():
-        if task.get('completed'):
-            task_title.append(task['title'])
-            complete += 1
-
-    print("Employee {} is done with tasks({}/{}):".format(name, complete, total_task))
-    for title in task_title:
-        print("\t{}".format(title))
-
+    # Output
+    json_to_export = {}
+    json_to_export[ID] = []
+    with open(str(ID) + ".json", "w", encoding="utf8") as file:
+        for task in todos:
+            json_to_export[ID].append({
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": user.get("username")
+            })
+        json.dump(json_to_export, file)
