@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """ Python script that, using this REST API
 (https://jsonplaceholder.typicode.com/), for a given employee ID, returns
@@ -24,5 +23,3 @@ if __name__ == '__main__':
     for task in response.json():
         if task.get('completed'):
             print("\t {}".format(task.get('title')))
-
-
