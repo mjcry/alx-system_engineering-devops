@@ -1,48 +1,28 @@
+
 #!/usr/bin/python3
-"""
-Module to get todo list progress of an employee from https://jsonplaceholder.typicode.com/.
-"""
-import sys
+""" Python script that, using this REST API
+(https://jsonplaceholder.typicode.com/), for a given employee ID, returns
+information about his/her TODO list progress. """
+
 import requests
 
+import requests
+from sys import argv
 
-def get_todo_list(employee_id):
-    """
-    Function to get the employee TODO list progress.
-    """
-    # API endpoint for getting employee details
-    employee_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(employee_id)
-    # API endpoint for getting employee's tasks
-    tasks_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(employee_id)
+if __name__ == '__main__':
+    user_id = argv[1]
+    url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
+    response = requests.get(url)
+    name = response.json().get('name')
 
-    # Fetching employee details
-    response = requests.get(employee_url)
-    employee = response.json()
-    name = employee.get('name')
+    url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(user_id)
+    response = requests.get(url)
+    total_tasks = len(response.json())
+    done_tasks = sum(task.get('completed') for task in response.json())
 
-    # Fetching employee's tasks
-    response = requests.get(tasks_url)
-    tasks = response.json()
-    total_tasks = len(tasks)
-    completed_tasks = [task for task in tasks if task.get('completed')]
-    num_completed_tasks = len(completed_tasks)
-
-    # Outputting results
-    print("Employee {} is done with tasks({}/{}):".format(name, num_completed_tasks, total_tasks))
-    for task in completed_tasks:
-        print("\t {} {}".format(task.get('title'), '\t'))
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: {} EMPLOYEE_ID".format(sys.argv[0]))
-        sys.exit(1)
-
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Employee ID must be an integer")
-        sys.exit(1)
-
-    get_todo_list(employee_id)
+    print("Employee {} is done with tasks({}/{}):".format(name, done_tasks, total_tasks))
+    for task in response.json():
+        if task.get('completed'):
+            print("\t {}".format(task.get('title')))
 
 
