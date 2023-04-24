@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
     export data in the JSON format.
 """
+
 if __name__ == "__main__":
     import json
     import requests
