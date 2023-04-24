@@ -1,39 +1,30 @@
-
 #!/usr/bin/python3
 """
-export data in the JSON format.
+Write a Python script that, using this REST API,
+for a given employee ID, returns information about
+his/her TODO list progress
+export data in the json format.
 """
+import json
+import requests
+import sys
 
-if __name__ == "__main__":
-    import json
-    import requests
-    from sys import argv
+import json
+import requests
+import sys
 
-    # Data
-    ID = argv[1]
-    url_api = "https://jsonplaceholder.typicode.com"
 
-    # Endpoints
-    ep_user = "{}/users/{}".format(url_api, str(ID))
-    ep_todos = "{}/todos".format(ep_user)
+if __name__ == '__main__':
+    id_c = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    users = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                         .format(id_c)).json()
+    todos = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}"
+                         .format(sys.argv[1])).json()
 
-    # Requests
-    user = requests.get(ep_user)
-    todos = requests.get(ep_todos)
-
-    # Format
-    user = user.json()
-    todos = todos.json()
-
-    # Output
-    json_to_export = {}
-    json_to_export[ID] = []
-    with open(str(ID) + ".json", "w", encoding="utf8") as file:
-        for task in todos:
-            json_to_export[ID].append({
-                "task": task.get("title"),
-                "completed": task.get("completed"),
-                "username": user.get("username")
-            })
-        json.dump(json_to_export, file)
-if __name__ == "__main__":
+    with open("{}.json".format(id_c), "w") as user_id:
+        json.dump({id_c: [{
+                'task': task.get('title'),
+                'completed': task.get('completed'),
+                'username': users.get('username')
+            } for task in todos]}, user_id)
