@@ -1,5 +1,6 @@
-# Sky is the limit, let's bring that limit higher
-exec { 'ulimit':
-  command => 'sed -i "s/15/4096/" /etc/default/nginx; service nginx restart',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+# fix limited fd
+exec {'fd':
+path     => ['/usr/bin', '/bin'],
+command  => "sudo sed -i 's/15/3000/g' /etc/default/nginx; sudo service nginx restart",
+provider => 'shell',
 }

@@ -1,7 +1,12 @@
-# change the OS configuration so that it is possible to login with
-# the holberton user and open a file without any error message.
-exec { 'hard/soft':
-  command => 'sed -i "s/5/50/" /etc/security/limits.conf; \
-  sed -i "s/4/40/" /etc/security/limits.conf;',
-  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+#  many open files
+
+exec {'hard':
+path     => ['/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/'],
+command  => "sudo sed -i 's/holberton hard nofile 5/holberton hard nofile 65536/g' /etc/security/limits.conf; /sbin/sysctl -p",
+provider => 'shell',
+}
+exec {'soft':
+path     => ['/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/'],
+command  => "sudo sed -i 's/holberton soft nofile 4/holberton soft nofile 65536/g' /etc/security/limits.conf; /sbin/sysctl -p",
+provider => 'shell',
 }
